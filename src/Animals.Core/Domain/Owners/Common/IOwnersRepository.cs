@@ -7,4 +7,6 @@ public interface IOwnersRepository
 {
     Task<Owner> GetOwnerById(Guid ownerId, CancellationToken cancellationToken);
     void Add(Owner owner);
+
+    void Delete(Owner owner);
 }

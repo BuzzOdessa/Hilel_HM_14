@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Animals.Application.Domain.Animals.Commands.UpdateAnimal;
-using Animals.Core.Common;
-using Animals.Core.Domain.Animals.Common;
-using Animals.Core.Domain.Animals.Data;
+﻿using Animals.Core.Common;
 using Animals.Core.Domain.Owners.Common;
 using Animals.Core.Domain.Owners.Data;
 using MediatR;

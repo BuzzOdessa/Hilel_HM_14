@@ -7,6 +7,8 @@ using Animals.Api.Constants;
 using Animals.Api.Domain.Animals.Records;
 using Animals.Application.Domain.Animals.Commands.UpdateAnimal;
 using Animals.Application.Domain.Owners.Commands.UpdateOwner;
+using Animals.Application.Domain.Animals.Commands.DeleteAnimal;
+using Animals.Application.Domain.Owners.Commands.DeleteOwner;
 
 namespace Animals.Api.Domain.Owners
 {
@@ -47,7 +49,7 @@ namespace Animals.Api.Domain.Owners
             [FromRoute] Guid id,
             [FromBody][Required] UpdateOwnerRequest request,
            CancellationToken cancellationToken = default)
-       {
+        {
            var command = new UpdateOwnerCommand(
                id,
                request.FirstName,
@@ -59,5 +61,22 @@ namespace Animals.Api.Domain.Owners
             await mediator.Send(command, cancellationToken);
             return Ok();
         }
+
+        /// <summary>
+        /// видалити власника 
+        /// </summary>
+        /// <param name="id">ідентифікатор власника </param>
+        /// <returns></returns>
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteOwner(
+            [FromRoute] Guid id,
+            CancellationToken cancellationToken = default)
+        {
+            var command = new DeleteOwnerCommand(id);
+            await mediator.Send(command, cancellationToken);
+            return Ok();
+        }
+
     }
 }

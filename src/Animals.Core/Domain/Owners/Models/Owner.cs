@@ -1,6 +1,4 @@
-﻿using Animals.Core.Domain.Animals.Data;
-using System.Xml.Linq;
-using Animals.Core.Domain.Animals.Models;
+﻿using Animals.Core.Domain.Animals.Models;
 using Animals.Core.Domain.Owners.Data;
 
 namespace Animals.Core.Domain.Owners.Models;
