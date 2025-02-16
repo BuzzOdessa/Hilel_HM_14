@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Domain\Animals\Commands\AssignOwner\" />
     <Folder Include="Domain\Animals\Queries\GetAnimalsByName\" />
+    <Folder Include="Domain\Owners\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
