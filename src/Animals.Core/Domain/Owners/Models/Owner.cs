@@ -1,4 +1,6 @@
-﻿using Animals.Core.Domain.Animals.Models;
+﻿using Animals.Core.Domain.Animals.Data;
+using System.Xml.Linq;
+using Animals.Core.Domain.Animals.Models;
 using Animals.Core.Domain.Owners.Data;
 
 namespace Animals.Core.Domain.Owners.Models;
@@ -49,5 +51,14 @@ public class Owner
             data.Email,
             data.PhoneNumber
         );
+    }
+
+    public void Update(UpdateOwnerData data)
+    {
+        FirstName = data.FirstName;
+        LastName = data.LastName;
+        MiddleName = data.MiddleName;
+        Email = data.Email;
+        PhoneNumber = data.PhoneNumber;
     }
 }

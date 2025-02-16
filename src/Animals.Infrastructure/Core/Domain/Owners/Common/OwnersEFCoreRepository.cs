@@ -8,6 +8,7 @@ using Animals.Core.Domain.Animals.Common;
 using Animals.Core.Domain.Animals.Models;
 using Animals.Core.Domain.Owners.Common;
 using Animals.Core.Domain.Owners.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Animals.Infrastructure.Core.Domain.Owners.Common
 {
@@ -25,9 +26,12 @@ namespace Animals.Infrastructure.Core.Domain.Owners.Common
             dbContext.Remove(owner);
         }
 
-        public Task<Owner> GetOwnerById(Guid ownerId, CancellationToken cancellationToken)
+        public async Task<Owner> GetOwnerById(Guid ownerId, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await 
+                 dbContext.Owners
+                   .Where(x => x.Id == ownerId)
+                   .FirstOrDefaultAsync(cancellationToken) ?? throw new InvalidOperationException("owner was not found");
         }
     }
 }

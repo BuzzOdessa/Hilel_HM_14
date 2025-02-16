@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Animals.Api.Domain.Owners.Records;
 using Animals.Application.Domain.Owners.Commands.CreateOwner;
 using Animals.Api.Constants;
+using Animals.Api.Domain.Animals.Records;
+using Animals.Application.Domain.Animals.Commands.UpdateAnimal;
+using Animals.Application.Domain.Owners.Commands.UpdateOwner;
 
 namespace Animals.Api.Domain.Owners
 {
@@ -32,5 +35,29 @@ namespace Animals.Api.Domain.Owners
             return Ok(id);
         }
 
+
+        /// <summary>
+        /// оновити інформацію по  власнику
+        /// </summary>
+        /// <param name="id">ідентифікатор влксника </param>        
+        /// <returns></returns>
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateOwner(
+            [FromRoute] Guid id,
+            [FromBody][Required] UpdateOwnerRequest request,
+           CancellationToken cancellationToken = default)
+       {
+           var command = new UpdateOwnerCommand(
+               id,
+               request.FirstName,
+               request.LastName,
+               request.MiddleName,
+               request.Email,
+               request.PhoneNumber
+            );
+            await mediator.Send(command, cancellationToken);
+            return Ok();
+        }
     }
 }
